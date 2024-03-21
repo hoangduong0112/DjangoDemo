@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 class user(AbstractUser):
-    pass
+    avatar = CloudinaryField(null=True)
 
 
 class category(models.Model):
@@ -46,7 +46,7 @@ class Lesson(BaseModel):
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
-        return self.name
+        return self.subject
 
 class Interaction(BaseModel):
     user = models.ForeignKey(user, on_delete=models.CASCADE)
@@ -54,3 +54,7 @@ class Interaction(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class Comment(BaseModel):
+    pass
